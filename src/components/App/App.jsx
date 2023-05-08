@@ -3,7 +3,7 @@ import { Notify } from 'notiflix';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import SearchFilter from 'components/SearchFilter';
-import { Container, MainTitle, SubTitle } from './App.styled';
+import { Container } from './App.styled';
 
 class App extends Component {
   state = {
@@ -66,10 +66,10 @@ class App extends Component {
     const visibleContacts = this.showContacts();
     return (
       <Container>
-        <MainTitle>Phonebook</MainTitle>
+        <h1 className="title">Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
 
-        <SubTitle>Contacts</SubTitle>
+        <h2 className="title">Contacts</h2>
         <SearchFilter filter={filter} onChange={this.handleFilter} />
 
         <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />

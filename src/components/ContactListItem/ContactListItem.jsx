@@ -1,23 +1,17 @@
 import PropTypes from 'prop-types';
-import {
-  ContactsItem,
-  DeleteButton,
-  Cross,
-  CrossLine,
-  ContactNumber,
-  ContactName,
-} from './ContactListItem.styled';
+import { ContactData } from './ContactListItem.styled';
 
 const ContactListItem = ({ id, name, number, onDelete }) => {
   return (
-    <ContactsItem key={id}>
-      <ContactName>{name}:</ContactName> <ContactNumber>{number}</ContactNumber>
-      <DeleteButton onClick={() => onDelete(id)}>
-        <Cross viewBox="0 0 10 10" width="24px" height="24px">
-          <CrossLine d="M2,8 L8,2 M2,2 L8,8" />
-        </Cross>
-      </DeleteButton>
-    </ContactsItem>
+    <ContactData key={id}>
+      <p className="contact-name">{name}:</p>{' '}
+      <p className="contact-number">{number}</p>
+      <button className="delete-button" onClick={() => onDelete(id)}>
+        <svg className="cross" viewBox="0 0 10 10" width="24px" height="24px">
+          <path className="cross-line" d="M2,8 L8,2 M2,2 L8,8" />
+        </svg>
+      </button>
+    </ContactData>
   );
 };
 
