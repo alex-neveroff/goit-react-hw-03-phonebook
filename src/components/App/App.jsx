@@ -4,6 +4,7 @@ import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import SearchFilter from 'components/SearchFilter';
 import { Container } from './App.styled';
+import Notification from 'components/Notification';
 
 class App extends Component {
   state = {
@@ -72,17 +73,28 @@ class App extends Component {
   }
 
   render() {
-    const { filter } = this.state;
+    const { contacts, filter } = this.state;
     const visibleContacts = this.showContacts();
     return (
       <Container>
         <h1 className="title">Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-
         <h2 className="title">Contacts</h2>
-        <SearchFilter filter={filter} onChange={this.handleFilter} />
-
-        <ContactList contacts={visibleContacts} onDelete={this.deleteContact} />
+        {contacts.length > 0 ? (
+          <>
+            <SearchFilter filter={filter} onChange={this.handleFilter} />
+            {visibleContacts.length > 0 ? (
+              <ContactList
+                contacts={visibleContacts}
+                onDelete={this.deleteContact}
+              />
+            ) : (
+              <Notification message="No matches found" />
+            )}
+          </>
+        ) : (
+          <Notification message="Your phonebook is empty" />
+        )}
       </Container>
     );
   }
