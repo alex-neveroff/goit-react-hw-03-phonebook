@@ -19,11 +19,9 @@ class App extends Component {
   isContactExists = newContact => {
     const { contacts } = this.state;
     const loweredNewContact = newContact.name.toLowerCase();
-
-    const matchingContact = contacts.filter(contact => {
-      return contact.name.toLowerCase() === loweredNewContact;
-    });
-    return matchingContact.length > 0 ? true : false;
+    return contacts.some(
+      contact => contact.name.toLowerCase() === loweredNewContact
+    );
   };
 
   addContact = newContact => {
