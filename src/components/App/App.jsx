@@ -12,6 +12,21 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const storageContacts = localStorage.getItem('contacts');
+    const parsedStorageContacts = JSON.parse(storageContacts);
+    if (parsedStorageContacts) {
+      this.setState({ contacts: parsedStorageContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    if (prevState.contacts !== contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
   isContactExists = newContact => {
     const { contacts } = this.state;
     const loweredNewContact = newContact.name.toLowerCase();
@@ -56,21 +71,6 @@ class App extends Component {
         firstContact.name.localeCompare(secondContact.name)
       );
   };
-
-  componentDidMount() {
-    const storageContacts = localStorage.getItem('contacts');
-    const parsedStorageContacts = JSON.parse(storageContacts);
-    if (parsedStorageContacts) {
-      this.setState({ contacts: parsedStorageContacts });
-    }
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    const { contacts } = this.state;
-    if (prevState.contacts !== contacts) {
-      localStorage.setItem('contacts', JSON.stringify(contacts));
-    }
-  }
 
   render() {
     const { contacts, filter } = this.state;
