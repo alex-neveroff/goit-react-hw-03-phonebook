@@ -9,11 +9,18 @@ export const Container = styled.div`
   box-shadow: 0px 0px 10px ${colors.mainShadow};
 
   .title {
-    font-size: 26px;
     font-weight: bold;
     color: ${colors.primary};
     text-align: center;
     margin-bottom: 30px;
     text-transform: uppercase;
+  }
+
+  .main-title {
+    font-size: 26px;
+  }
+
+  .sub-title {
+    font-size: 22px;
   }
 `;

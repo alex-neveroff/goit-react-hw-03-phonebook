@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
+import { Container } from './App.styled';
 import { Notify } from 'notiflix';
 import ContactForm from 'components/ContactForm';
 import ContactList from 'components/ContactList';
 import SearchFilter from 'components/SearchFilter';
-import { Container } from './App.styled';
 import Notification from 'components/Notification';
 
 class App extends Component {
@@ -77,9 +77,9 @@ class App extends Component {
     const visibleContacts = this.showContacts();
     return (
       <Container>
-        <h1 className="title">Phonebook</h1>
+        <h1 className="title main-title">Phonebook</h1>
         <ContactForm onSubmit={this.addContact} />
-        <h2 className="title">Contacts</h2>
+        <h2 className="title sub-title">Contacts</h2>
         {contacts.length > 0 ? (
           <>
             <SearchFilter filter={filter} onChange={this.handleFilter} />
