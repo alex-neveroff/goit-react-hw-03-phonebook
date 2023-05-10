@@ -38,8 +38,6 @@ export const ContactData = styled.li`
     width: 100%;
     height: 100%;
     pointer-events: none;
-  }
-  .cross-line {
     stroke: currentColor;
   }
 `;
